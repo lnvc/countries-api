@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { useTheme } from '@/stores/theme';
+import { useTheme } from '#/stores/theme';
 
 const store = useTheme();
 const theme = ref(store.theme);
@@ -19,8 +19,15 @@ store.$subscribe((_, state) => {
 
 <template>
   <div :class="['container', theme]">
-    <h1>Where in the world?</h1>
-    <div class="modeContainer" @click="toggleMode">
+    <router-link :to="{ name: 'home' }">
+      <h1>Where in the world?</h1>
+    </router-link>
+    <div
+      tabindex="0"
+      class="modeContainer"
+      @click="toggleMode"
+      @keyup.enter="toggleMode"
+    >
       <ion-icon v-if="theme === 'dark'" name="moon"></ion-icon>
       <ion-icon v-else name="moon-outline"></ion-icon>
       <h2>{{ theme }} Mode</h2>
@@ -29,23 +36,12 @@ store.$subscribe((_, state) => {
 </template>
 
 <style lang="scss" scoped>
-@import "../styles/variables.scss";
-
+@import "#/styles/variables.scss";
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-}
-
-.dark {
-  background: $darkBlue;
-  box-shadow: 0 1px 10px -3px $darkestBlue;
-}
-
-.light {
-  background: $white;
-  box-shadow: 0 1px 10px -3px $darkGray;
 }
 
 h2 {
@@ -55,7 +51,7 @@ h2 {
 .modeContainer {
   display: flex;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 10px;
   cursor: pointer;
 }
 </style>

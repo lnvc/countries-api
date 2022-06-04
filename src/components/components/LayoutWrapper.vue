@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { useTheme } from '@/stores/theme';
+import { useTheme } from '#/stores/theme';
 
 const store = useTheme();
 const theme = ref(store.theme);
@@ -17,7 +17,7 @@ store.$subscribe((_, state) => {
 </template>
 
 <style lang="scss" scoped>
-@import "@/styles/variables.scss";
+@import "#/styles/variables.scss";
 .container {
   width: 100%;
   height: 100%;

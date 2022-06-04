@@ -3,20 +3,21 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import LayoutWrapper from '@/components/LayoutWrapper.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
-import BodyWrapper from './components/BodyWrapper.vue';
-import HomePage from './components/HomePage.vue';
+import BodyWrapper from '@/components/BodyWrapper.vue';
 </script>
 
 <template>
   <LayoutWrapper>
     <HeaderComponent />
     <BodyWrapper>
-      <HomePage />
+      <router-view></router-view>
     </BodyWrapper>
   </LayoutWrapper>
 </template>
 
-<style>
+<style lang="scss">
+@import "#/styles/variables.scss";
+
 @font-face {
   font-family: "Nunito Sans";
   src: local('NunitoSans'), url(./assets/fonts/NunitoSans-Regular.ttf) format("truetype");
@@ -31,13 +32,33 @@ body {
   font-family: "Nunito Sans", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 input {
   font-family: "Nunito Sans", Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 h1 {
+  font-size: larger;
   font-weight: 800;
+}
+h2 {
+  font-size: medium;
+  font-weight: 600;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dark {
+  background: $darkBlue;
+  box-shadow: 0 1px 7px -3px $darkestBlue;
+}
+
+.light {
+  background: $white;
+  box-shadow: 0 1px 7px -3px $darkGray;
 }
 </style>

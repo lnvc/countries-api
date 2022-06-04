@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { useTheme } from '@/stores/theme';
+import { useTheme } from '#/stores/theme';
 
 const store = useTheme();
 const theme = ref(store.theme);
@@ -18,16 +18,17 @@ store.$subscribe((_, state) => {
 </template>
 
 <style lang="scss" scoped>
-@import "../styles/variables.scss";
+@import "#/styles/variables.scss";
 .container {
   display: flex;
   align-items: center;
   width: 100%;
   border-radius: 7px;
+  height: 3.5rem;
 }
 .searchIcon {
   position: absolute;
-  left: 3rem;
+  left: 1.5rem;
 }
 input {
   background: transparent;

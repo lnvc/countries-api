@@ -5,7 +5,7 @@ interface ITheme {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export const useTheme = defineStore('main', {
+export const useTheme = defineStore('theme', {
   state: () => ({
     theme: 'dark',
   } as ITheme),
