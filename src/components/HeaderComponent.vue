@@ -20,8 +20,10 @@ store.$subscribe((_, state) => {
 <template>
   <div :class="['container', theme]">
     <h1>Where in the world?</h1>
-    <div>
-      <h2 @click="toggleMode">{{ theme }} Mode</h2>
+    <div class="modeContainer" @click="toggleMode">
+      <ion-icon v-if="theme === 'dark'" name="moon"></ion-icon>
+      <ion-icon v-else name="moon-outline"></ion-icon>
+      <h2>{{ theme }} Mode</h2>
     </div>
   </div>
 </template>
@@ -33,13 +35,27 @@ store.$subscribe((_, state) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem;
 }
 
 .dark {
   background: $darkBlue;
+  box-shadow: 0 1px 10px -3px $darkestBlue;
 }
 
 .light {
   background: $white;
+  box-shadow: 0 1px 10px -3px $darkGray;
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+.modeContainer {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  cursor: pointer;
 }
 </style>
